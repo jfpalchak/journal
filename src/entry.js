@@ -29,6 +29,25 @@ Entry.prototype.consonantCounter = function() {
     return [consonants, vowels];
   }
 
+Entry.prototype.getTeaser = function () {
+    const text = this.journalText;
+
+    let indexNum = text.indexOf(".");
+    let firstSentence = text.slice(0, [indexNum]);
+
+    let words = firstSentence.split(" ");
+
+    let teaserOfEight = [];
+
+    if (words.length > 8) { // if there are more than 8 words
+      for (let i=0; i < 8; i++) { // get only the first 8 words
+        teaserOfEight.push(words[i]);
+      }
+        return teaserOfEight.join(' '); // return the 8 words
+    } else {
+      return words.join(' ');
+    }
+};
 
 const newEntry = new Entry("Mondays suck.", "Still Mondays suck.");
 
